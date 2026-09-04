@@ -1,0 +1,1264 @@
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+============================== */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    .fredoka {
+    font-family: 'Fredoka One', cursive;
+  }
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.login-page {
+    width: 100%;
+    height: 100vh;
+
+    margin: 0;
+
+    display: flex;
+
+    background-color: white;
+
+    border-radius: 0;
+
+    overflow: hidden;
+}
+
+
+/* ==============================
+   LADO ESQUERDO
+============================== */
+
+.left-side {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background-color: white;
+}
+
+.left-side h1 {
+    font-size: 45px;
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+.left-side p {
+    font-size: 16px;
+}
+
+
+/* ==============================
+   LADO DIREITO
+============================== */
+
+.right-side {
+    width: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: #dcdcdc;
+}
+
+
+/* ==============================
+   ÁREA DO LOGIN (ATUALIZADA COM O AZUL DA LOGO)
+============================== */
+
+.login-container {
+    width: 65%;
+
+    text-align: center;
+}
+
+.login-container h2 {
+    font-size: 48px;
+
+    color: #009ad9; /* O azul claro tecnológico do lado direito da logo */
+
+    margin-bottom: 18px;
+}
+
+.login-description {
+    font-size: 17px;
+
+    line-height: 1.3;
+
+    margin-bottom: 30px;
+    color: #000000;
+}
+
+
+/* ==============================
+   CAMPOS
+============================== */
+
+.input-group {
+    text-align: left;
+
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+    color: #000000;
+}
+
+.input-group input {
+    width: 100%;
+
+    height: 38px;
+
+    padding: 0 12px;
+
+    border: 1px solid #009ad9; /* Borda combinando com o azul da logo */
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.input-group input::placeholder {
+    color: #009ad9;
+    opacity: 0.6;
+}
+
+.input-group input:focus {
+    border: 2px solid #009ad9; /* Foco firme no azul da logo */
+}
+
+
+/* ==============================
+   BOTÃO ENTRAR
+============================== */
+
+button {
+    width: 100%;
+
+    height: 40px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #009ad9; /* Botão no tom de azul do círculo */
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #007cb0; /* Tom ligeiramente mais escuro no hover para efeito de clique */
+}
+
+
+/* ==============================
+   LINKS
+============================== */
+
+.create-account {
+    margin-top: 18px;
+
+    font-size: 13px;
+    color: #000000;
+}
+
+.create-account a {
+    color: #009ad9;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+.create-account a:hover {
+    color: #007cb0;
+}
+
+
+
+/* ==============================
+   CADASTRO
+============================== */
+
+.cadastro-page {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    position: relative;
+
+    background-color: white;
+
+    overflow: hidden;
+}
+
+
+/* ==============================
+   BOTÃO FECHAR
+============================== */
+
+.close-button {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: #dff3c8;
+
+    color: #222;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 30px;
+
+    line-height: 1;
+}
+
+
+/* ==============================
+   LADO ESQUERDO
+============================== */
+
+.cadastro-left {
+    width: 50%;
+
+    background-color: white;
+}
+
+
+/* ==============================
+   LADO DIREITO
+============================== */
+
+.cadastro-right {
+    width: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: #dcdcdc;
+
+    text-align: center;
+}
+
+
+/* ==============================
+   CONTAINER
+============================== */
+
+.cadastro-container {
+    width: 65%;
+}
+
+
+/* ==============================
+   TÍTULO
+============================== */
+
+.cadastro-container h1 {
+    font-size: 48px;
+
+    color: #65bd0b;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   DESCRIÇÃO
+============================== */
+
+.cadastro-description {
+    font-size: 17px;
+
+    line-height: 1.25;
+
+    margin-bottom: 28px;
+}
+
+
+/* ==============================
+   BOTÕES
+============================== */
+
+.cadastro-button {
+    width: 100%;
+
+    height: 38px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    margin-bottom: 10px;
+
+    color: #111;
+}
+
+
+/* Botões claros */
+
+.cadastro-button.secondary {
+    background-color: #e5f5d6;
+}
+
+
+/* Botão verde principal */
+
+.cadastro-button.primary {
+    background-color: #65bd0b;
+
+    color: white;
+}
+
+
+/* Hover */
+
+.cadastro-button:hover {
+    opacity: 0.85;
+}
+
+
+/* ==============================
+   SEPARADOR
+============================== */
+
+.separator {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 12px 0 15px;
+}
+
+.separator span {
+    height: 1px;
+
+    background-color: #222;
+
+    flex: 1;
+}
+
+.separator p {
+    font-size: 14px;
+
+    margin: 0;
+}
+/* ==============================
+   FORMULÁRIO DE CADASTRO
+============================== */
+
+.email-form {
+    display: none;
+}
+
+.email-form h2 {
+    color: #65bd0b;
+    margin-bottom: 20px;
+}
+
+.cadastro-input {
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.cadastro-input label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.cadastro-input input {
+    width: 100%;
+    height: 38px;
+
+    padding: 0 12px;
+
+    border: 1px solid #65bd0b;
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.cadastro-input input::placeholder {
+    color: #65bd0b;
+}
+/* ==============================
+   TELA INICIAL
+   ============================== */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+
+/* CONTEÚDO PRINCIPAL */
+
+.pagina-inicial {
+    width: 90%;
+    max-width: 1100px;
+    margin: 20px auto;
+
+    border: 8px solid #69d101;
+    background-color: white;
+  }
+
+
+/* ==============================
+   MENU
+============================== */
+
+.menu {
+    background-color: #65c900;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 8px;
+}
+
+/* ABAS */
+
+.menu a {
+    background-color: white;
+
+    color: black;
+    text-decoration: none;
+
+    border: 1px solid black;
+
+    padding: 7px 20px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    margin: 0;
+
+    display: block;
+}
+
+/* PEQUENA DIVISÃO ENTRE AS ABAS */
+
+.menu a + a {
+    margin-left: 3px;
+}
+
+/* EFEITO AO PASSAR O MOUSE */
+
+.menu a:hover {
+    background-color: #f2f2f2;
+}
+
+
+/* PUBLICAÇÃO */
+
+.publicacao {
+    width: 500px;
+    margin: 30px auto;
+}
+
+/* USUÁRIO */
+
+.usuario {
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+
+/* IMAGEM */
+
+.imagem-container {
+    position: relative;
+    width: 500px;
+}
+
+.imagem-container img {
+    display: block;
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+
+/* BOTÃO TUTORIAL */
+
+.botao-tutorial {
+    position: absolute;
+
+    top: 10px;
+    right: -50px;
+
+    width: 105px;
+    padding: 6px;
+
+    background-color: white;
+    color: black;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+
+/* AÇÕES */
+
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    width: fit-content;
+
+    margin-top: 8px;
+    padding: 4px 8px;
+
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+/* BOTÕES */
+
+.acoes button {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    background: transparent;
+
+    color: black;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+/* DESCRIÇÃO */
+
+.descricao {
+    text-align: left;
+    margin-top: 8px;
+}
+
+.descricao p {
+    margin: 4px 0;
+}
+/* =================================
+   SOBRE NÓS
+================================= */
+
+.sobre-pagina {
+    width: 900px;
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    background-color: white;
+
+    display: flex;
+
+    border: 6px solid #65c900;
+}
+
+
+/* ================================
+   MENU LATERAL
+================================ */
+
+.sobre-menu {
+    width: 220px;
+
+    padding: 25px 18px;
+
+    background-color: white;
+}
+
+.sobre-menu h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+
+    font-size: 24px;
+}
+
+
+/* ITENS DO MENU */
+
+.item-menu {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.item-menu span {
+    font-size: 16px;
+}
+
+.item-menu p {
+    margin: 0;
+
+    font-size: 15px;
+}
+
+
+/* ================================
+   CONTEÚDO
+================================ */
+
+.sobre-conteudo {
+    flex: 1;
+
+    padding: 25px 20px;
+}
+
+
+/* TÍTULO */
+
+.sobre-conteudo h1 {
+    width: 90%;
+
+    margin: 0 0 15px 0;
+
+    font-size: 34px;
+    line-height: 1.05;
+}
+
+
+/* ================================
+   IMAGEM
+================================ */
+
+.sobre-imagem {
+    width: 100%;
+    height: 180px;
+
+    margin-bottom: 12px;
+
+    background-color: #d3d3d3;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sobre-imagem span {
+    color: #777;
+}
+
+
+/* ================================
+   CAIXAS
+================================ */
+
+.caixa-sobre {
+    background-color: #eaf7dc;
+
+    padding: 15px;
+
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+}
+
+.caixa-sobre h2 {
+    margin: 0 0 8px 0;
+
+    font-size: 18px;
+}
+
+.caixa-sobre p {
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+
+/* ================================
+   EQUIPE
+================================ */
+
+.equipe-conteudo {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.equipe-conteudo p {
+    flex: 1;
+}
+.botao-inicio {
+    position: fixed;
+
+    top: 20px;
+    left: 20px;
+
+    background-color: white;
+    color: black;
+
+    border: 1px solid black;
+    border-radius: 4px;
+
+    padding: 8px 18px;
+
+    text-decoration: none;
+
+    font-family: "Fredoka", sans-serif;
+    font-size: 14px;
+
+    box-shadow: 0 0 0 5px #65c914;
+
+    z-index: 999;
+}
+/* ==============================
+   TELA DE LOADING
+============================== */
+
+.loading-page {
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: entrada-loading 0.5s ease-out;
+}
+
+
+/* CONTEÚDO */
+
+.loading-container {
+    text-align: center;
+}
+
+
+/* LOGO */
+
+.loading-logo {
+    width: 140px;
+    height: 140px;
+
+    margin: 0 auto 15px;
+
+    border: 2px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+}
+
+
+/* NOME */
+
+.loading-container h1 {
+    margin: 0 0 25px;
+
+    font-size: 30px;
+}
+
+
+/* ==============================
+   INDICADOR
+============================== */
+
+.loading-indicador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+
+/* SÍMBOLOS DE RECICLAGEM */
+
+.reciclagem {
+    font-size: 30px;
+}
+
+
+/* GRUPO DAS BOLINHAS */
+
+.bolinhas {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* BOLINHAS */
+
+.bolinhas span {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background-color: #d9d9d9;
+
+    animation: preencher-bolinha 1.8s forwards;
+}
+
+
+/* ORDEM DA ANIMAÇÃO */
+
+.bolinhas span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.bolinhas span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.bolinhas span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.bolinhas span:nth-child(4) {
+    animation-delay: 0.9s;
+}
+
+.bolinhas span:nth-child(5) {
+    animation-delay: 1.2s;
+}
+
+.bolinhas span:nth-child(6) {
+    animation-delay: 1.5s;
+}
+
+
+/* PREENCHIMENTO */
+
+@keyframes preencher-bolinha {
+
+    from {
+        background-color: #d9d9d9;
+    }
+
+    to {
+        background-color: #65c900;
+    }
+
+}
+
+
+/* TEXTO LOADING */
+
+.loading-container p {
+    margin: 0;
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+}
+
+
+/* ==============================
+   ENTRADA DA TELA
+============================== */
+
+@keyframes entrada-loading {
+
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+
+}
+.botao-inicio {
+    position: fixed;
+
+    top: 20px;
+    left: 20px;
+
+    background-color: white;
+    color: black;
+
+    border: 1px solid black;
+    border-radius: 4px;
+
+    padding: 8px 18px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    box-shadow: 0 0 0 5px #65c914;
+
+    z-index: 999;
+}
+/* ==============================
+   CHUVA DE RECICLAGEM ORIGINAL (NA FRENTE)
+============================== */
+
+.left-side {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Removemos o z-index para ela voltar a cair por cima de tudo naturalmente */
+.chuva-reciclagem {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Removemos as travas da imagem e textos para as bolinhas passarem na frente */
+.left-side img, 
+.left-side h1, 
+.left-side p,
+.left-side .loading-container {
+    position: relative;
+}
+
+.chuva-reciclagem span {
+    position: absolute;
+    top: -50px;
+    font-size: 28px;
+    color: #021853; /* Mantém o azul elétrico lindo da sua logo */
+    animation: cair-reciclagem 5s linear infinite;
+}
+
+
+
+
+/* POSIÇÃO DAS RECICLAGENS */
+
+.chuva-reciclagem span:nth-child(1) {
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.chuva-reciclagem span:nth-child(2) {
+    left: 15%;
+    animation-delay: 1.2s;
+}
+
+.chuva-reciclagem span:nth-child(3) {
+    left: 27%;
+    animation-delay: 2.4s;
+}
+
+.chuva-reciclagem span:nth-child(4) {
+    left: 38%;
+    animation-delay: 0.7s;
+}
+
+.chuva-reciclagem span:nth-child(5) {
+    left: 49%;
+    animation-delay: 3s;
+}
+
+.chuva-reciclagem span:nth-child(6) {
+    left: 60%;
+    animation-delay: 1.8s;
+}
+
+.chuva-reciclagem span:nth-child(7) {
+    left: 70%;
+    animation-delay: 3.5s;
+}
+
+.chuva-reciclagem span:nth-child(8) {
+    left: 80%;
+    animation-delay: 0.4s;
+}
+
+.chuva-reciclagem span:nth-child(9) {
+    left: 90%;
+    animation-delay: 2s;
+}
+
+.chuva-reciclagem span:nth-child(10) {
+    left: 95%;
+    animation-delay: 4s;
+}
+
+
+/* ANIMAÇÃO */
+
+@keyframes cair-reciclagem {
+
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+
+}
+/* ==============================
+   CHUVA - TELA DE CADASTRO
+============================== */
+
+.cadastro-left {
+    position: relative;
+    overflow: hidden;
+}
+
+.cadastro-chuva {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.cadastro-chuva span {
+    position: absolute;
+    top: -50px;
+
+    font-size: 28px;
+
+    animation: cair-reciclagem 5s linear infinite;
+}
+.cadastro-chuva span:nth-child(1) {
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.cadastro-chuva span:nth-child(2) {
+    left: 15%;
+    animation-delay: 1.2s;
+}
+
+.cadastro-chuva span:nth-child(3) {
+    left: 27%;
+    animation-delay: 2.4s;
+}
+
+.cadastro-chuva span:nth-child(4) {
+    left: 38%;
+    animation-delay: 0.7s;
+}
+
+.cadastro-chuva span:nth-child(5) {
+    left: 49%;
+    animation-delay: 3s;
+}
+
+.cadastro-chuva span:nth-child(6) {
+    left: 60%;
+    animation-delay: 1.8s;
+}
+
+.cadastro-chuva span:nth-child(7) {
+    left: 70%;
+    animation-delay: 3.5s;
+}
+
+.cadastro-chuva span:nth-child(8) {
+    left: 80%;
+    animation-delay: 0.4s;
+}
+
+.cadastro-chuva span:nth-child(9) {
+    left: 90%;
+    animation-delay: 2s;
+}
+
+.cadastro-chuva span:nth-child(10) {
+    left: 95%;
+    animation-delay: 4s;
+}
+.logo-login {
+    width: 180px;
+    height: auto;
+
+    position: relative;
+    z-index: 2;
+}
+/* ==============================
+   PUBLICAÇÕES
+============================== */
+
+.publicacoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 40px;
+
+    padding: 20px;
+    background-color: white;
+}
+
+
+/* COLUNAS */
+
+.coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+
+/* PUBLICAÇÃO */
+
+.publicacao {
+    width: 100%;
+}
+
+
+/* USUÁRIO */
+
+.usuario {
+    width: 100%;
+
+    text-align: left;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+
+/* IMAGEM */
+
+.imagem-container {
+    position: relative;
+
+    width: 100%;
+}
+
+.imagem-container img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: cover;
+}
+
+
+/* AÇÕES */
+
+.acoes {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    width: fit-content;
+
+    margin-top: 8px;
+
+    padding: 4px 8px;
+
+    background-color: white;
+
+    border: 1px solid black;
+
+    border-radius: 5px;
+}
+
+
+/* BOTÕES */
+
+.acoes button {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+
+    background: transparent;
+
+    color: black;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+/* DESCRIÇÃO */
+
+.descricao {
+    text-align: left;
+
+    margin-top: 8px;
+}
+
+.descricao p {
+    margin: 4px 0;
+}

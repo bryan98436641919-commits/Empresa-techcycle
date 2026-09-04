@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techcycle - Perfil</title>
+    
+    <!-- ESTILO EMbutido para garantir que o design funcione de primeira -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* BARRA DO TOPO VERDE */
+        .navbar {
+            width: 100%;
+            background-color: #65bd0b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .menu a {
+    color: white;
+    text-decoration: none;
+    margin-right: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+    padding: 8px 14px;
+    border-radius: 20px;
+}
+
+ .menu a.active {
+    background-color: white;
+    color: #65bd0b;
+    border-radius: 20px;
+    padding: 8px 14px;
+}
+
+        .menu-items a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .menu-items a:hover {
+            text-decoration: underline;
+        }
+
+        /* CONTAINER PRINCIPAL DO PERFIL */
+        .perfil-container {
+            max-width: 1280px;
+            width: 100%;
+            margin: 40px auto;
+            display: flex;
+            gap: 40px;
+            padding: 0 40px;
+            flex: 1; /* Empurra o rodapé para o final da página */
+        }
+
+        /* LADO ESQUERDO: INFORMAÇÕES DO USUÁRIO */
+        .perfil-sidebar {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Foto de perfil redonda cinza do Figma */
+        .avatar-placeholder {
+            width: 180px;
+            height: 180px;
+            background-color: #dcdcdc;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .perfil-sidebar h2 {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        .perfil-sidebar .bio {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* Lista de Tags com os emojis */
+        .user-tags {
+            list-style: none;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .user-tags li {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Ícones de Redes Sociais do Perfil */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 24px;
+        }
+
+        .social-icon {
+            cursor: pointer;
+        }
+
+        /* LADO DIREITO: MOSAICO DE POSTS (3 COLUNAS) */
+        .perfil-posts-grid {
+            width: 75%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Recria o grid do seu Figma */
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* Cartões das postagens */
+        .perfil-card {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Bloco cinza simulando a imagem do artesanato */
+        /* Garante que a imagem ocupe todo o espaço do quadrado sem distorcer */
+.card-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cortar elegantemente para preencher o espaço */
+    display: block;
+}
+
+
+        .card-footer {
+            padding: 12px;
+        }
+
+        .card-actions {
+            font-size: 16px;
+            margin-bottom: 8px;
+            letter-spacing: 5px;
+        }
+        .botao-curtir {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.botao-curtir.animar {
+    animation: subirCoracao 0.4s ease;
+}
+
+.botao-curtir.curtido {
+    color: red;
+}
+
+@keyframes subirCoracao {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+        .card-text {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        /* RODAPÉ VERDE FIXO */
+        .footer-bar {
+            width: 100;
+            background-color: #65bd0b;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            margin-top: 40px;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .footer-left span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-left a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-right {
+            font-size: 20px;
+            letter-spacing: 10px;
+        }
+        /* FOTO DE PERFIL EDITÁVEL */
+
+.avatar-container {
+    cursor: pointer;
+}
+
+.avatar-placeholder {
+    width: 180px;
+    height: 180px;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+#foto-perfil {
+    display: none;
+}
+
+
+/* NOME DO USUÁRIO */
+
+.username-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.username-container .username {
+    margin: 0;
+}
+
+#campo-usuario {
+    display: none;
+    width: 130px;
+    padding: 5px 8px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.username-container button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px;
+}
+
+#confirmar-usuario {
+    display: none;
+}
+
+
+/* Container que posiciona a logo */
+/* CONTAINER DA LOGO DA BARRA LATERAL ALINHADO À ESQUERDA */
+.logo-empresa-inferior {
+    width: 100%;
+    margin-top: 500px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: flex-start; /* MODIFICADO: Encosta o conteúdo totalmente na esquerda */
+    align-items: center;
+     padding-left: -350px;
+}
+
+/* MANTENHA O RESTANTE DA IMAGEM IGUAL */
+.logo-empresa-inferior #logo-minima {
+    width: 140px;
+    height: 140px;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- TOPO VERDE -->
+    <header class="navbar">
+        <div class="logo">Techcycle</div>
+        <nav class="menu-items">
+            <a href="loading.html?pagina=telaincial.html">
+            Início 🍀
+       </a>
+            <a href="#">Tutoriais 💡 </a>
+            <a href="#">Criar 🪪</a>
+        </nav>
+    </header>
+
+    <!-- CONTAINER PRINCIPAL DO PERFIL -->
+    <div class="perfil-container">
+
+        <!-- LADO ESQUERDO: INFORMAÇÕES DO USUÁRIO -->
+        <aside class="perfil-sidebar">
+
+    <label for="foto-perfil" class="avatar-container">
+        <div class="avatar-placeholder">
+            <img id="imagem-perfil" src="" alt="Foto de perfil">
+        </div>
+    </label>
+
+    <input type="file" id="foto-perfil" accept="image/*">
+
+    <div class="username-container">
+        <h2 class="username" id="nome-usuario">@eco.art</h2>
+
+        <input type="text" id="campo-usuario" value="@eco.art">
+
+        <button id="editar-usuario">✏️</button>
+        <button id="confirmar-usuario">✔️</button>
+    </div>
+
+    <p class="bio">somos do eco art!</p>
+
+            <ul class="user-tags">
+                <li>🌱 Empresa Júnior</li>
+                <li>♻️ Sustentabilidade</li>
+                <li>🌍 Reciclagem</li>
+            </ul>
+
+            <div class="social-icons">
+                <span class="social-icon">📸</span>
+                <span class="social-icon">✖️</span>
+                <span class="social-icon">✉️</span>
+            </div>
+            <!-- CONTAINER DA LOGO DA EMPRESA -->
+<div class="logo-empresa-inferior">
+    <img src="techcycle img.jpg" id="logo-minima" alt="Logo Techcycle">
+</div>
+
+        </aside>
+
+               <!-- LADO DIREITO: GRID DE PUBLICAÇÕES (IGUAL AO FIGMA) -->
+        <main class="perfil-posts-grid">
+            
+            <!-- Card 1 -->
+            <article class="perfil-card">
+                <div class="card-image-box">
+                    <!-- ADICIONADO AQUI -->
+                    <img src="imagemperfil1.jpg" alt="Dicas de reciclagem" class="card-img">
+                </div>
+                <div class="card-footer">
+                    <div class="card-actions">
+                        <button class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div>
+                    <p class="card-text"><p>Maquete de casinha sustentável feita com caixas de papelão e sobras de papel colorido. Perfeita para exercitar a criatividade</p>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="perfil-card">
+                <div class="card-image-box">
+                    <!-- ADICIONADO AQUI -->
+                    <img src="imagemperfil22.jpg" alt="Moldura com rolhas recicladas" class="card-img">
+                </div>
+                <div class="card-footer">
+                    <div class="card-actions">
+                        <button class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div> <!-- Corrigido: Fechamento da div card-actions que faltava no seu código -->
+                    <p class="card-text">"Cofrinho de porquinho feito com garrafa PET e e.v.a. vermelho. Uma forma divertida de ensinar as crianças a poupar e a reciclar</p>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="perfil-card">
+                <div class="card-image-box">
+                    <!-- ADICIONADO AQUI -->
+                    <img src="imagemperfil3.jpg" alt="Tags de ecologia" class="card-img">
+                </div>
+                <div class="card-footer">
+                    <div class="card-actions">
+                        <button class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div>
+                    <p class="card-text">Avengers Assemble</p>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="perfil-card">
+                <div class="card-image-box">
+                    <!-- ADICIONADO AQUI -->
+                    <img src="imagemperfil4.jpg" alt="Objeto transformado" class="card-img">
+                </div>
+                <div class="card-footer">
+                    <!-- Corrigido: Envolvendo os botões na div card-actions para manter o padrão -->
+                    <div class="card-actions">
+                        <button class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div>
+                    <p class="card-text">"Mais um bichinho para a nossa coleção ecológica! Reaproveitando rolinhos de papelão com muita cor e diversão.</p>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="perfil-card">
+                <div class="card-image-box">
+                    <!-- ADICIONADO AQUI -->
+                    <img src="imagemperfil5.jpg" alt="Cesta simples reciclada" class="card-img">
+                </div>
+                <div class="card-footer">
+                    <!-- Corrigido: Envolvendo os botões na div card-actions para manter o padrão -->
+                    <div class="card-actions">
+                        <button class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div>
+                    <p class="card-text">Não descarte suas latas de conserva! Junte algumas tampinhas e crie lindos espantálhos decorativos em formato de ave.</p>
+                </div>
+            </article>
+
+        </main>
+
+                    
+                </div>
+            </article>
+
+        </main>
+
+    </div>
+
+    <!-- RODAPÉ VERDE -->
+    <footer class="footer-bar">
+        <div class="footer-left">
+            <span>Techcycle</span>
+            <a href="#">Sobre nós</a>
+            <a href="#">Suporte</a>
+        </div>
+        <div class="footer-right">📸 ✖️</div>
+
+        <div class="logo-empresa-inferior">
+                
+            </div>
+    </footer>
+
+ <script>
+
+const botoesCurtir = document.querySelectorAll(".botao-curtir");
+
+botoesCurtir.forEach(function(curtir) {
+
+    curtir.addEventListener("click", function() {
+
+        if (curtir.textContent.trim() === "🤍") {
+            curtir.textContent = "❤️";
+            curtir.classList.add("curtido");
+        } else {
+            curtir.textContent = "🤍";
+            curtir.classList.remove("curtido");
+        }
+
+        curtir.classList.remove("animar");
+        void curtir.offsetWidth;
+        curtir.classList.add("animar");
+
+    });
+
+});
+// ==============================
+// EDITAR NOME DE USUÁRIO
+// ==============================
+
+const nomeUsuario = document.getElementById("nome-usuario");
+const campoUsuario = document.getElementById("campo-usuario");
+const editarUsuario = document.getElementById("editar-usuario");
+const confirmarUsuario = document.getElementById("confirmar-usuario");
+
+editarUsuario.addEventListener("click", function() {
+
+    nomeUsuario.style.display = "none";
+    campoUsuario.style.display = "block";
+
+    editarUsuario.style.display = "none";
+    confirmarUsuario.style.display = "inline";
+
+    campoUsuario.focus();
+});
+
+
+confirmarUsuario.addEventListener("click", function() {
+
+    let novoNome = campoUsuario.value.trim();
+
+    if (novoNome === "") {
+        alert("Digite um nome de usuário.");
+        return;
+    }
+
+    if (!novoNome.startsWith("@")) {
+        novoNome = "@" + novoNome;
+    }
+
+    nomeUsuario.textContent = novoNome;
+    campoUsuario.value = novoNome;
+
+    nomeUsuario.style.display = "block";
+    campoUsuario.style.display = "none";
+
+    editarUsuario.style.display = "inline";
+    confirmarUsuario.style.display = "none";
+});
+
+
+// ==============================
+// ALTERAR FOTO DE PERFIL
+// ==============================
+
+const fotoPerfil = document.getElementById("foto-perfil");
+const imagemPerfil = document.getElementById("imagem-perfil");
+
+fotoPerfil.addEventListener("change", function() {
+
+    const arquivo = fotoPerfil.files[0];
+
+    if (arquivo) {
+
+        const leitor = new FileReader();
+
+        leitor.onload = function(event) {
+            imagemPerfil.src = event.target.result;
+            imagemPerfil.style.display = "block";
+        };
+
+        leitor.readAsDataURL(arquivo);
+    }
+});
+
+</script>
+</body>
+</html>

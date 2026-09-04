@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techcycle - Tutoriais</title>
+    
+    <!-- ESTILO EMBUTIDO para garantir que fique idêntico à página inicial -->
+    <style>
+        @import url('https://googleapis.com');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .fredoka {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        /* BARRA DO TOPO VERDE (IGUAL À INICIAL) */
+        .menu {
+    width: 100%;
+    background-color: #65bd0b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+        .menu a {
+    color: white;
+    text-decoration: none;
+    margin-right: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+    padding: 8px 14px;
+    border-radius: 20px;
+}
+
+.menu a.active {
+    background-color: white;
+    color: #65bd0b;
+    border-radius: 20px;
+    padding: 8px 14px;
+}
+
+        .menu a:hover {
+            opacity: 0.8;
+        }
+        .barra-pesquisa {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-150px);
+}
+
+.barra-pesquisa input {
+    width: 400px;
+    height: 36px;
+    border: 2px solid black;
+    border-radius: 20px 0 0 20px;
+    padding: 0 15px;
+    font-size: 14px;
+    outline: none;
+}
+
+.barra-pesquisa input:focus {
+    box-shadow: 3px 3px 0px black;
+}
+
+.barra-pesquisa button {
+    height: 36px;
+    width: 45px;
+    border: 2px solid black;
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    background-color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+        /* ABA ATIVA COM DESTAQUE BRANCO */
+        .menu a.active {
+            background-color: white;
+            color: #65bd0b;
+        }
+
+        /* GRID DOS TUTORIAIS (3 COLUNAS) */
+        .feed-container {
+            max-width: 1280px;
+            width: 100%;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            padding: 0 40px;
+            flex: 1;
+        }
+
+        /* Cartões das postagens */
+        .p/* CARTÕES DAS POSTAGENS (CORRIGIDO PARA EVITAR BURACOS) */
+.post-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: visible; /* Mantém a caixinha saindo para o lado */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative;
+    
+    /* SOLUÇÃO DO BUG: Força todos os cards a terem a mesma altura na linha */
+    height: 100%; 
+}
+
+/* CAIXA DO TUTORIAL (AJUSTE DE POSICIONAMENTO) */
+.caixa-tutorial {
+    display: none;
+    position: absolute;
+
+    top: 0; 
+    left: 100%;
+
+    margin-left: 15px;
+
+    width: 290px;
+    height: 320px; 
+
+    background-color: white;
+    border: none; 
+    border-radius: 12px;
+
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+    z-index: 100;
+    letter-spacing: normal;
+    overflow-y: auto; 
+    
+    /* Garante que a abertura da caixa não empurre o card de baixo */
+    pointer-events: auto; 
+}
+
+        /* Bloco cinza simulando o vídeo/imagem */
+        .card-media-box {
+            width: 100%;
+            height: 240px;
+            background-color: #dcdcdc;
+            overflow: hidden;
+        }
+
+        /* Para os posts que já têm imagem real */
+        .card-media-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-footer {
+            padding: 15px;
+        }
+
+        .card-actions {
+            font-size: 18px;
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+        }
+        .botao-curtir {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.botao-curtir.animar {
+    animation: subirCoracao 0.4s ease;
+}
+
+.botao-curtir.curtido {
+    color: red;
+}
+
+@keyframes subirCoracao {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+        .card-info .username {
+            font-size: 14px;
+            color: #111;
+            margin-bottom: 4px;
+        }
+
+        .card-info .caption {
+            font-size: 13px;
+            color: #444;
+            line-height: 1.4;
+        }
+        css/* IMPORTANTE: Crie ou adicione isso no container onde está a imagem */
+.sobre-imagem {
+    position: relative;      /* AGORA A CAIXA FLUTUANTE VAI SE REFECHAREM A ESTA FOTO */
+    width: 100%;
+    height: 180px;           /* Mantendo a altura que ajustamos antes */
+    background-color: #dcdcdc;
+    border-radius: 8px;
+    overflow: visible;       /* ATENÇÃO: Mude de hidden para visible para a caixa lateral aparecer! */
+}
+        /* CAIXA DO TUTORIAL ALTA E ATUALIZADA */
+.caixa-tutorial {
+    display: none;
+    position: absolute;
+
+    top: 0; 
+    left: 100%;
+
+    margin-left: 15px;
+
+    width: 290px;
+    height: 320px; 
+
+    background-color: white;
+    border: none; 
+    border-radius: 12px;
+
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+    z-index: 100;
+    letter-spacing: normal;
+    
+    /* Permite rolar os passos se o tutorial for muito comprido */
+    overflow-y: auto; 
+}
+
+.caixa-tutorial.aberta {
+    display: block;
+}
+
+.titulo-tutorial {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000; 
+
+    border-bottom: 2px solid #f0f0f0; 
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+
+/* ESTILOS NOVOS PARA O SEU PLANO DE CONTEÚDO */
+.tutorial-autor {
+    font-size: 13px;
+    color: #000000;
+    margin-bottom: 2px;
+}
+
+.tutorial-nome-projeto {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.divisor-interno {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin-bottom: 12px;
+}
+
+.linha-tutorial {
+    display: flex;
+    flex-direction: column; /* Deixa o texto do passo embaixo do título "Passo 1" */
+    gap: 4px;
+    font-size: 13px;
+    margin-bottom: 14px;
+    color: #000000;
+}
+
+.linha-tutorial strong {
+    color: #65bd0b; /* Dá um leve destaque verde nos números dos passos */
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- TOPO VERDE COM EMOJIS E ABA TUTORIAIS DESTACADA -->
+    <nav class="menu">
+
+    <div class="menu-left">
+        <a href="loading.html?pagina=telaincial.html" class="fredoka">Início 🍀</a>
+        <a href="tutoriais.html" class="fredoka active">Tutoriais 💡</a>
+        <a href="loading.html?pagina=perfil.html" class="fredoka">Perfil 🪪</a>
+    </div>
+
+    <div class="barra-pesquisa">
+        <input type="text" id="campo-pesquisa" placeholder="Pesquisar...">
+        <button id="botao-pesquisa">🔍</button>
+    </div>
+
+    <div class="menu-right">
+        <a href="sobrenos.html" class="fredoka">Sobre nós 📖</a>
+    </div>
+
+</nav>
+    <!-- GRID DE TUTORIAIS (3 COLUNAS) -->
+        <!-- GRID DE TUTORIAIS BLINDADO CONTRA BURACOS (6 CARDS ALINHADOS) -->
+    <main class="feed-container">
+        
+        <!-- CARD 1 -->
+        <article class="post-card">
+            <div class="card-media-box">
+                <img src="imagemtutorial111.jpg" alt="Conchas decorativas">
+            </div>
+            <div class="card-footer">
+                <div class="card-actions">
+                    <button class="botao-curtir">🤍</button>
+                    <button class="botao-comentario">💬</button>
+                    <button>↗</button>
+                    <div class="caixa-tutorial">
+                        <div class="titulo-tutorial"><span>Tutorial</span><span>Materiais</span></div>
+                        <div class="linha-tutorial"><span>Passo 1</span><span>Exemplo</span></div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="username"><strong>@username</strong></p>
+                    <p class="caption">Não jogue fora os rolinhos de papel! Junte tintas coloridas e crie personagens incríveis para brincar e decorar o quarto</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="post-card">
+            <div class="card-media-box">
+                <img src="imagemtutorial22.jpg" alt="Abelha de garrafa">
+            </div>
+            <div class="card-footer">
+                <div class="card-actions">
+                    <button class="botao-curtir">🤍</button>
+                    <button class="botao-comentario">💬</button>
+                    <button>↗</button>
+                    <div class="caixa-tutorial">
+                        <div class="titulo-tutorial"><span>Tutorial</span><span>Materiais</span></div>
+                        <div class="linha-tutorial"><span>Passo 1</span><span>Exemplo</span></div>
+                    </div>
+                </div>   
+                <div class="card-info">
+                    <p class="username"><strong>@nocreativexp</strong></p>
+                    <p class="caption">Arte com reciclagem! Recorte as cavidades da caixa de ovo, pinte de vermelho e monte seu próprio caranguejo marinho</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="post-card">
+            <div class="card-media-box">
+                <img src="imagemtutorial3.webp" alt="Tubarão" onerror="this.src='images/imagem.png';">
+            </div>
+            <div class="card-footer">
+                <div class="card-actions">
+                    <button class="botao-curtir">🤍</button>
+                    <button class="botao-comentario">💬</button>
+                    <button>↗</button>
+                    <div class="caixa-tutorial">
+                        <div class="titulo-tutorial"><span>Tutorial</span><span>Materiais</span></div>
+                        <div class="linha-tutorial"><span>Passo 1</span><span>Exemplo</span></div>
+                    </div>
+                </div>     
+                <div class="card-info">
+                    <p class="username"><strong>@needshelp</strong></p>
+                    <p class="caption">Transformando pratos descartáveis em predadores dos oceanos. Uma atividade manual fantástica e ecológica para o público infantil.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="post-card">
+            <div class="card-media-box">
+                <img src="imagemtutorial4.jpg" alt="Pirâmide de rolhas">
+            </div>
+            <div class="card-footer">
+                <div class="card-actions">
+                    <button class="botao-curtir">🤍</button>
+                    <button class="botao-comentario">💬</button>
+                    <button>↗</button>
+                    <div class="caixa-tutorial">
+                        <div class="titulo-tutorial"><span>Tutorial</span><span>Materiais</span></div>
+                        <div class="linha-tutorial"><span>Passo 1</span><span>Exemplo</span></div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="username"><strong>@another.one</strong></p>
+                    <p class="caption">Não jogue as rolhas de vinho no lixo! Monte esse painel decorativo geométrico que une estilo, utilidade e consciência ambiental</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="post-card">
+            <div class="card-media-box">
+                <!-- Cole o nome da sua quinta imagem no src se quiser mudar -->
+                <img src="imagemtutorial33.jpg" alt="Artesanato 5">
+            </div>
+            <div class="card-footer">
+                <div class="card-actions">
+                    <button class="botao-curtir">🤍</button>
+                    <button class="botao-comentario">💬</button>
+                    <button>↗</button>
+                    <div class="caixa-tutorial">
+                        <div class="titulo-tutorial"><span>Tutorial</span><span>Materiais</span></div>
+                        <div class="linha-tutorial"><span>Passo 1</span><span>Exemplo</span></div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="username"><strong>@youngcreator.mcr</strong></p>
+                    <p class="caption">Deixe seu jardim ou horta suspensa muito mais alegre! Vasos suspensos com formato de bichinhos feitos a partir de garrafas plásticas</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- CARD 6 -->
+        <article class="post-card">
+            <div class="card-media-box">
+                <!-- Coloque a imagem da espada ou o arquivo correspondente aqui -->
+                <img src="imagemtutorialthor.jpg" alt="Artesanato 6">
+            </div>
+            <div class="card-footer">
+                <div class="card-actions">
+                    <button class="botao-curtir">🤍</button>
+                    <button class="botao-comentario">💬</button>
+                    <button>↗</button>
+                    <div class="caixa-tutorial">
+                        <div class="titulo-tutorial"><span>Tutorial</span><span>Materiais</span></div>
+                        <div class="linha-tutorial"><span>Passo 1</span><span>Exemplo</span></div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="username"><strong>@s0s.pls</strong></p>
+                    <p class="caption">Sempre achei que ia ser digno de poder levantar o mjolnir</p>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <script>
+
+const botoesCurtir = document.querySelectorAll(".botao-curtir");
+
+botoesCurtir.forEach(function(curtir) {
+
+    curtir.addEventListener("click", function() {
+
+        if (curtir.textContent.trim() === "🤍") {
+            curtir.textContent = "❤️";
+            curtir.classList.add("curtido");
+        } else {
+            curtir.textContent = "🤍";
+            curtir.classList.remove("curtido");
+        }
+
+        curtir.classList.remove("animar");
+        void curtir.offsetWidth;
+        curtir.classList.add("animar");
+
+    });
+
+});
+
+
+const botoesComentario = document.querySelectorAll(".botao-comentario");
+
+botoesComentario.forEach(function(botao) {
+
+    botao.addEventListener("click", function() {
+
+        const caixa = botao.parentElement.querySelector(".caixa-tutorial");
+
+        caixa.classList.toggle("aberta");
+
+    });
+
+});
+const campoPesquisa = document.getElementById("campo-pesquisa");
+const botaoPesquisa = document.getElementById("botao-pesquisa");
+
+botaoPesquisa.addEventListener("click", function() {
+    const texto = campoPesquisa.value;
+    console.log("Pesquisa:", texto);
+});
+
+</script>
+
+</script>
+</body>
+</html>

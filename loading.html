@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHCYCLE - Loading</title>
+
+    <!-- TRANSIÇÃO ORGÂNICA: ENTRA POR CIMA E SAI POR CIMA -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    background-color: #ffffff; /* Troque para branco */
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; 
+}
+
+
+
+
+        /* SUA CLASSE PRINCIPAL COM ANIMAÇÃO DE ENTRADA E SAÍDA FLUIDA */
+        .loading-page {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-color: #ffffff;
+            
+            /* Junta as duas animações: entra deslizando e sai subindo perto dos 2 segundos */
+            animation: entrar-topo 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+                       sair-topo 0.4s cubic-bezier(0.5, 0, 0.75, 0) 1.6s forwards;
+        }
+
+        /* SEU CONTAINER CENTRAL */
+        .loading-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 30px;
+        }
+
+        .loading-logo {
+    width: 280px;  /* Aumentado para dar mais destaque */
+    height: 280px; /* Aumentado para dar mais destaque */
+    border: none; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 25px auto;
+    background-color: #ffffff; 
+}
+
+/* Aproveite e adicione esse estilo para a palavra loading ficar bonita e cinza */
+.loading-container p {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #666666; /* Um cinza elegante que combina com o fundo branco */
+    letter-spacing: 4px; /* Deixa as letras mais espalhadinhas e modernas */
+    margin-top: 20px;
+}
+
+
+        /* SEU INDICADOR */
+        .loading-indicador {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .loading-indicador .reciclagem {
+            font-size: 24px;
+            color: #65bd0b;
+        }
+
+        /* SUA DIV DE BOLINHAS */
+        .bolinhas {
+            display: flex;
+            gap: 6px;
+        }
+
+        /* SUAS BOLINHAS INDIVIDUAIS */
+        .bolinhas span {
+            width: 14px;
+            height: 14px;
+            background-color: #65bd0b;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulsar-bolinha 1.2s ease-in-out infinite;
+        }
+
+        /* EFEITO DE ONDA NAS 10 BOLINHAS */
+        .bolinhas span:nth-child(1) { animation-delay: 0.1s; }
+        .bolinhas span:nth-child(2) { animation-delay: 0.2s; }
+        .bolinhas span:nth-child(3) { animation-delay: 0.3s; }
+        .bolinhas span:nth-child(4) { animation-delay: 0.4s; }
+        .bolinhas span:nth-child(5) { animation-delay: 0.5s; }
+        .bolinhas span:nth-child(6) { animation-delay: 0.6s; }
+        .bolinhas span:nth-child(7) { animation-delay: 0.7s; }
+        .bolinhas span:nth-child(8) { animation-delay: 0.8s; }
+        .bolinhas span:nth-child(9) { animation-delay: 0.9s; }
+        .bolinhas span:nth-child(10) { animation-delay: 1.0s; }
+
+        /* SEU TEXTO LOADING */
+        .loading-container p {
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 4px;
+            animation: aparecer-loading 1s ease-out forwards;
+        }
+
+        /* CHUVA DE RECICLAGEM AO FUNDO */
+        .chuva-reciclagem {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .chuva-reciclagem span {
+            position: absolute;
+            top: -50px;
+            font-size: 28px;
+             color: #65bd0b;
+            animation: cair-reciclagem 4s linear infinite;
+        }
+
+        .chuva-reciclagem span:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .chuva-reciclagem span:nth-child(2) { left: 15%; animation-delay: 1s; }
+        .chuva-reciclagem span:nth-child(3) { left: 25%; animation-delay: 2s; }
+        .chuva-reciclagem span:nth-child(4) { left: 35%; animation-delay: 0.5s; }
+        .chuva-reciclagem span:nth-child(5) { left: 45%; animation-delay: 2.5s; }
+        .chuva-reciclagem span:nth-child(6) { left: 55%; animation-delay: 1.5s; }
+        .chuva-reciclagem span:nth-child(7) { left: 65%; animation-delay: 3s; }
+        .chuva-reciclagem span:nth-child(8) { left: 75%; animation-delay: 0.2s; }
+        .chuva-reciclagem span:nth-child(9) { left: 85%; animation-delay: 1.8s; }
+        .chuva-reciclagem span:nth-child(10) { left: 95%; animation-delay: 3.5s; }
+
+        /* ==============================
+           ANIMAÇÕES DE ENTRADA E SAÍDA
+        ============================== */
+        
+        /* 1. Surge de cima para baixo suavemente */
+        @keyframes entrar-topo {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* 2. Sobe e vai embora para o topo bem rápido no final dos 2 segundos */
+        @keyframes sair-topo {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-100%);
+            }
+        }
+
+        @keyframes cair-reciclagem {
+            from { transform: translateY(0) rotate(0deg); }
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        @keyframes pulsar-bolinha {
+            0%, 100% { transform: scale(0.6); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        @keyframes aparecer-loading {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CHUVA DE EMOJIS BRANCOS -->
+    <div class="chuva-reciclagem">
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+    </div>
+
+    
+
+    <!-- SUA ESTRUTURA HTML ORIGINAL - MANTIDA E ANIMADA -->
+    <main class="loading-page">
+
+        <div class="loading-container">
+
+            <div class="loading-logo">
+                <img src="techcycle img.jpg" alt="Logo Techcycle" style="width: 100%; height: 100%; object-fit: contain; display: block; margin: auto;">
+
+            </div>
+
+            
+
+            <div class="loading-indicador">
+
+                <span class="reciclagem">♻</span>
+
+                <div class="bolinhas">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <span class="reciclagem">♻</span>
+
+            </div>
+            <p>LOADING...</p>
+
+            
+
+        </div>
+
+    </main>
+
+    <!-- SEU SCRIPT DE 2 SEGUNDOS CONTINUA SEGURO -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

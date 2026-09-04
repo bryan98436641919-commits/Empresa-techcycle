@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techcycle - Sobre nós</title>
+
+    <!-- ESTILO COMPLETO COM A CHUVA DE EMOJIS NAS LATERAIS -->
+    <style>
+        @import url('https://googleapis.com');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Cor de fundo por trás da chuva */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            overflow-x: hidden; /* Evita barras de rolagem por causa dos emojis caindo */
+        }
+
+        .fredoka {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        /* O QUADRADO CENTRALIZADO PROTEGIDO */
+        .quadrado-central {
+            width: 1000px;
+            background-color: #ffffff;
+            border-left: 2px solid #e0e0e0;
+            border-right: 2px solid #e0e0e0;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10; /* Fica acima da chuva de emojis */
+        }
+
+        /* MENU SUPERIOR */
+        .menu {
+            width: 100%;
+            background-color: #65bd0b;
+            display: flex;
+            align-items: center;
+            padding: 18px 30px;
+        }
+
+        .menu .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            margin-right: 25px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            transition: opacity 0.2s;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .menu a:hover {
+            opacity: 0.8;
+        }
+
+        /* ESTRUTURA INTERNA DO CONTEÚDO */
+        .sobre-pagina {
+            display: flex;
+            width: 100%;
+            padding: 40px 30px;
+            gap: 30px;
+            background-color: #ffffff;
+            flex: 1;
+        }
+
+        /* MENU LATERAL ESQUERDO */
+        .sobre-menu {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #eeeeee;
+            padding-right: 20px;
+        }
+
+        .sobre-menu h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 20px;
+            color: #111;
+            margin-bottom: 25px;
+        }
+
+        .item-menu {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .item-menu span {
+            font-weight: bold;
+            font-size: 16px;
+            color: #111;
+            margin-right: 12px;
+            display: inline-block;
+            width: 20px;
+        }
+
+        .item-menu p {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        /* CONTEÚDO PRINCIPAL DIREITO */
+        .sobre-conteudo {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .sobre-conteudo h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 26px;
+            color: #111;
+            line-height: 1.25;
+        }
+
+        /* CAIXA DE IMAGEM AJUSTADA */
+.sobre-imagem {
+    width: 100%;             /* Mantém preenchendo a largura da coluna */
+    height: 180px;           /* REDUZIDO: Mude aqui para diminuir a altura (ex: 150px, 180px) */
+    max-width: 400px;        /* LIMITE: Evita que a imagem fique gigante em telas muito grandes */
+    margin: 0 auto;          /* Centraliza a caixinha caso ela não ocupe a largura toda */
+    background-color: #dcdcdc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-weight: bold;
+    overflow: hidden;        /* Corta o que passar das bordas */
+}
+
+/* COMPORTAMENTO DA FOTO */
+.sobre-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* Encaixa e recorta sem distorcer */
+    object-position: center; /* Centraliza o foco da foto */
+}
+
+        /* 1. Define o tamanho máximo da caixinha (o recorte) */
+.card-image-box {
+    width: 100%;        /* Ocupa a largura total disponível no card */
+    aspect-ratio: 1 / 1; /* Força a caixa a ser um quadrado perfeito (estilo Instagram) */
+    overflow: hidden;   /* Esconde qualquer sobra da imagem que passe do limite */
+    border-radius: 8px; /* Opcional: deixa as pontas do recorte arredondadas */
+}
+
+/* 2. Controla o comportamento da imagem dentro do recorte */
+.card-image-box img {
+    width: 100%;        /* Ajusta a largura para preencher a caixa */
+    height: 100%;       /* Ajusta a altura para preencher a caixa */
+    object-fit: cover;  /* MÁGICA: Redimensiona e corta a imagem sem distorcer ou esticar */
+    object-position: center; /* Mantém o foco do corte bem no meio da foto */
+}
+
+
+        /* TÓPICOS INFORMATIVOS */
+        .caixa-sobre {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .caixa-sobre h2 {
+            color: #65bd0b;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .caixa-sobre p {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* LISTAGEM DA EQUIPE */
+        .equipe-conteudo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .equipe-conteudo p {
+            font-size: 12px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .equipe-conteudo strong {
+            color: #222;
+        }
+
+        /* ==============================
+           CHUVA DE RECICLAGEM LATERAL
+        ============================== */
+        .chuva-reciclagem {
+            position: fixed; /* Troca para fixed para acompanhar a tela toda */
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1; /* Fica atrás da caixa do conteúdo */
+        }
+
+        .chuva-reciclagem span {
+            position: absolute;
+            top: -50px;
+            font-size: 28px;
+            animation: cair-reciclagem 5s linear infinite;
+        }
+
+        /* POSIÇÃO DAS RECICLAGENS ADAPTADAS PARA AS LATERAIS VAZIAS */
+        /* Parede da Esquerda (De 1% a 15% da tela) */
+        .chuva-reciclagem span:nth-child(1) { left: 1%; animation-delay: 0s; }
+        .chuva-reciclagem span:nth-child(2) { left: 4%; animation-delay: 1.2s; }
+        .chuva-reciclagem span:nth-child(3) { left: 8%; animation-delay: 2.4s; }
+        .chuva-reciclagem span:nth-child(4) { left: 11%; animation-delay: 0.7s; }
+        .chuva-reciclagem span:nth-child(5) { left: 14%; animation-delay: 3s; }
+
+        /* Parede da Direita (De 82% a 98% da tela) */
+        .chuva-reciclagem span:nth-child(6) { left: 82%; animation-delay: 1.8s; }
+        .chuva-reciclagem span:nth-child(7) { left: 86%; animation-delay: 3.5s; }
+        .chuva-reciclagem span:nth-child(8) { left: 90%; animation-delay: 0.4s; }
+        .chuva-reciclagem span:nth-child(9) { left: 94%; animation-delay: 2s; }
+        .chuva-reciclagem span:nth-child(10) { left: 98%; animation-delay: 4s; }
+
+        /* ANIMAÇÃO */
+        @keyframes cair-reciclagem {
+            from {
+                transform: translateY(0) rotate(0deg);
+            }
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+        /* CONTAINER DA IMAGEM NA LATERAL */
+.imagem-lateral {
+    width: 100%;            /* Ocupa toda a largura disponível na lateral */
+    height: 150px;          /* Altura do recorte (você pode aumentar ou diminuir esse valor) */
+    margin-top: 30px;       /* Cria um espaço confortável entre o item 03 e a imagem */
+    border-radius: 8px;     /* Deixa as pontas arredondadas igual ao restante do site */
+    overflow: hidden;       /* Corta as sobras da imagem */
+    background-color: #eee; /* Fundo cinza suave caso a imagem falhe ao carregar */
+}
+
+/* AJUSTE PERFEITO DA FOTO LATERAL */
+.imagem-lateral img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* Reduz e corta perfeitamente sem amassar a imagem */
+    object-position: center; /* Centraliza o foco da foto */
+}
+
+/* CONTAINER DO LOGOTIPO NA LATERAL - MAIOR E MAIS EMBAIXO */
+.logo-empresa-lateral {
+    width: 100%;            /* Ocupa a largura da barra lateral */
+    height: 180px;          /* AUMENTADO: De 100px para 160px para o logotipo ter mais espaço e crescer */
+    margin-top: 70px;       /* AUMENTADO: De 20px para 60px para empurrar a logo bem mais para baixo */
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+/* AJUSTE DO LOGO */
+.logo-empresa-lateral img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;    /* Mantém o logotipo inteiro e sem distorções */
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- CONTAINER DA SUA CHUVA DE RECICLAGEM -->
+    <div class="chuva-reciclagem">
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+        <span>♻</span>
+    </div>
+
+    <!-- QUADRADO CENTRALIZADO QUE FICA POR CIMA DA CHUVA -->
+    <div class="quadrado-central">
+
+        <!-- NAV BARRA SUPERIOR TOTALMENTE ENCOSTADA NO TOPO -->
+        <nav class="menu">
+            <span class="logo">Techcycle</span>
+            <a href="loading.html?pagina=telaincial.html" class="fredoka">Início 🍀</a>
+        </nav>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="sobre-pagina">
+
+            <!-- MENU LATERAL -->
+            <aside class="sobre-menu">
+                <h2>Nesse blog</h2>
+
+                <div class="item-menu">
+                    <span>01</span>
+                    <p>Poste seus artesanatos</p>
+                </div>
+
+                <div class="item-menu">
+                    <span>02</span>
+                    <p> Veja os tutoriais</p>
+                </div>
+
+                <div class="item-menu">
+                    <span>03</span>
+                    <p>Interaja com a comunidade</p>
+                </div>
+                <div class="imagem-lateral">
+        <img src="imagemsobrenos2.jpg" alt="Ilustração da lateral">
+                </div>
+                <div class="logo-empresa-lateral">
+        <img src="techcycle img.jpg" alt="Logotipo da Empresa">
+    </div>
+            </aside>
+
+            <!-- CONTEÚDO PRINCIPAL -->
+            <div class="sobre-conteudo">
+                <h1>Como criar itens sustentáveis pode ser divertido?</h1>
+
+                <!-- IMAGEM -->
+                <div class="sobre-imagem">
+                    <img src="imagemsobrenos1.png" alt="Imagem da publicação">
+                </div>
+
+                <!-- SOBRE NÓS -->
+                <div class="caixa-sobre">
+                    <h2>◀ Sobre nós</h2>
+                    <p>
+                        Somos uma empresa júnior criada por meio de uma
+                        parceria entre estudantes dos cursos de
+                        administração e desenvolvimento de sistemas.
+                    </p>
+                </div>
+
+                <!-- OBJETIVO -->
+                <div class="caixa-sobre">
+                    <h2>◀ Nosso objetivo</h2>
+                    <p>
+                        Ser referência em sustentabilidade e inovação
+                        no ambiente escolar, utilizando a tecnologia
+                        para valorizar o artesanato reciclável.
+                    </p>
+                </div>
+
+                <!-- EQUIPE -->
+                <div class="caixa-sobre equipe">
+                    <h2>◀ Equipe</h2>
+                    <div class="equipe-conteudo">
+                        <p>
+                            <strong>Gestão e Administrativo:</strong><br>
+                            Ester Alves, William Lima, Yasmin Ribeiro, Luiz Henrique.
+                            <br><br>
+                            <strong>Marketing:</strong><br>
+                            Francielly Tigre
+                            <br><br>
+                            <strong>Financeiro:</strong><br>
+                            Lara Maria
+                        </p>
+                        <p>
+                            <strong>Desenvolvedores:</strong><br>
+                            Maria Eduarda, Isabella Kethellyn, Elias Pereira, Bryan Silva, Alice Trindade.
+                        </p>
+                    </div>

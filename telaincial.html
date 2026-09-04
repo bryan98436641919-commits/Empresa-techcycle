@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHCYCLE - Início</title>
+
+    <!-- ESTILO EMBUTIDO para replicar perfeitamente o Figma com o botão na direita -->
+    <style>
+        @import url('https://googleapis.com');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        .fredoka {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        /* MENU / BARRA DO TOPO VERDE */
+        .menu {
+            width: 100%;
+            background-color: #65bd0b; /* Verde padrão do seu projeto */
+            display: flex;
+            justify-content: space-between; /* Afasta os blocos (esquerda e direita) */
+            align-items: center;
+            padding: 15px 40px;
+        }
+
+        /* Bloco que junta a logo e os links principais na esquerda */
+        .menu-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-left .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 30px; /* Espaço após a logo */
+        }
+
+        .menu a {
+    color: white;
+    text-decoration: none;
+    margin-right: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+    padding: 8px 14px;
+    border-radius: 20px;
+}
+
+.menu a.active {
+    background-color: white;
+    color: #65bd0b;
+    border-radius: 20px;
+    padding: 8px 14px;
+}
+
+        /* Espaçamento apenas nos links da esquerda */
+        .menu-left a {
+            margin-right: 20px;
+        }
+
+        .menu a:hover {
+            opacity: 0.8;
+        }
+
+        /* GRID DAS PUBLICAÇÕES (3 COLUNAS) */
+        .publicacoes {
+            max-width: 1280px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            padding: 0 40px;
+        }
+
+        .coluna {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* CARTÃO DE PUBLICAÇÃO */
+        .publicacao {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .usuario {
+            padding: 12px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #222;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .imagem-container {
+            width: 100%;
+            height: 260px;
+            background-color: #dcdcdc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+                .imagem-container img {
+            width: 100%;       /* Faz a foto ocupar a largura total do card */
+            height: 260px;     /* Reduzi de 260px para 200px para deixar ela menor verticalmente */
+            object-fit: cover; /* Recorta a imagem proporcionalmente para não ficar esticada ou feia */
+        }
+
+
+        .acoes {
+            padding: 12px 15px 5px 15px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .acoes button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .descricao {
+            padding: 10px 15px 15px 15px;
+            font-size: 13px;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .descricao strong {
+            display: inline-block;
+            margin-right: 5px;
+            color: #111;
+        }
+
+        .descricao p {
+            display: inline;
+        }
+        .botao-curtir {
+    transition: transform 0.2s ease;
+}
+
+.botao-curtir.animar {
+    animation: subirCoracao 0.4s ease;
+}
+
+.botao-curtir.curtido {
+    color: red;
+  }
+
+@keyframes subirCoracao {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+  }
+  .barra-pesquisa {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-120px);
+}
+
+.barra-pesquisa input {
+    width: 450px;
+    height: 36px;
+    border: 2px solid black;
+    border-radius: 20px 0 0 20px;
+    padding: 0 15px;
+    font-size: 14px;
+    outline: none;
+}
+
+.barra-pesquisa button {
+    height: 36px;
+    width: 45px;
+    border: 2px solid black;
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    background-color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+    </style>
+</head>
+
+<body>
+
+    <main class="pagina-inicial">
+
+        <!-- MENU ATUALIZADO COM O DESIGN INTELIGENTE -->
+        <nav class="menu">
+            <!-- Lado Esquerdo (Logo + Links principais) -->
+            <div class="menu-left">
+                <span class="logo">Techcycle</span>
+                <a href="telaincial.html" class="fredoka">Início 🍀</a>
+                <a href="tutoriais.html" class="fredoka">Tutoriais 💡</a>
+                <a href="loading.html?pagina=perfil.html" class="fredoka">Perfil 🪪</a>
+            </div>
+            <div class="barra-pesquisa">
+    <input type="text" placeholder="Pesquisar...">
+    <button>🔍</button>
+     </div>
+
+
+            
+            <!-- Lado Direito (Sobre Nós isolado e destacado) -->
+            <div class="menu-right">
+                <a href="sobrenos.html" class="fredoka">Sobre nós 📖</a>
+            </div>
+        </nav>
+
+        <!-- PUBLICAÇÕES -->
+        <div class="publicacoes">
+
+            <!-- COLUNA 1 -->
+            <div class="coluna">
+                <article class="publicacao">
+                    <div class="usuario">@youngcreator.mcr</div>
+                    <div class="imagem-container">
+                        <img src="imagemtelaincial11.jpg"Imagem da publicação">
+                    </div>
+                    <div class="acoes">
+                        <button id="curtir" class="botao-curtir">🤍</button>
+                        <button id="comentar">💬</button>
+                        <button id="compartilhar">↗</button>
+                    </div>
+                    <div class="descricao">
+                        <strong>@youngcreator.mcr</strong>
+                        <p>Gatinho preto feito com prato de papel descartável! Uma ótima atividade para fazer com as crianças usando o que sobrou das festas<p>
+                    </div>
+                </article>
+
+                <article class="publicacao">
+                    <div class="usuario">@recicla_art</div>
+                    <div class="imagem-container">
+                        <img src="imagemtelainicial6.jpg" alt="Imagem da publicação">
+                    </div>
+                    <div class="acoes">
+                        <button id="curtir" class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div>
+                    <div class="descricao">
+                        <strong>@recicla_art</strong>
+                        <p>reparando a decoração de Halloween com antecedência! Morcegos criativos reaproveitando rolinhos de papelão e tinta preta.</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- COLUNA 2 -->
+            <div class="coluna">
+                <article class="publicacao">
+                    <div class="usuario">@craftshop</div>
+                    <div class="imagem-container">
+                        <img src="imagemtelainicial222.webp" alt="Imagem da publicação">
+
+
+
+
+                    </div>
+                    <div class="acoes">
+                         <button id="curtir" class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div>
+                    <div class="descricao">
+                        <strong>@craftshop</strong>
+                        <p>Olha que incrível essa zebrinha feita inteiramente com rolos de papel higiênico! Simples, rápido e com zero desperdício.</p>
+                    </div>
+                </article>
+
+                <article class="publicacao">
+                    <div class="usuario">@sustentavel_diy</div>
+                    <div class="imagem-container">
+                        <img src="imagemtelainicial2.jpg" alt="Imagem da publicação">
+                    </div>
+                    <div class="acoes">
+                         <button id="curtir" class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div>
+                    <div class="descricao">
+                        <strong>@sustentavel_diy</strong>
+                        <p>nao vejo a hora de lamçar fnaf 3 para poder usar isso.</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- COLUNA 3 -->
+            <div class="coluna">
+                <article class="publicacao">
+                    <div class="usuario">@milk_crafts</div>
+                    <div class="imagem-container">
+                        <img src="imagemtelainicial3.jpg" alt="Imagem da publicação">
+                    </div>
+                    <div class="acoes">
+                        <button id="curtir" class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div>
+                    <div class="descricao">
+                        <strong>@milk_crafts</strong>
+                        <p>Do descarte para o quarto gamer: transformamos uma caixa de leite vazia em um boneco articulado do Minecraft.</p>
+                    </div>
+                </article>
+
+                <article class="publicacao">
+                    <div class="usuario">@eco_ideias</div>
+                    <div class="imagem-container">
+                        <img src="imagemtelainicial4.jpg" alt="Imagem da publicação">
+                    </div>
+                    <div class="acoes">
+                        <button id="curtir" class="botao-curtir">🤍</button>
+                        <button>💬</button>
+                        <button>↗</button>
+                    </div>
+                    <div class="descricao">
+                        <strong>@eco_ideias</strong>
+                        <p>Uma lagarta super colorida feita com argolas de rolo de papel e limpadores de cachimbo para as antenas. Muito fácil de montar</p>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </main>
+<script>
+
+
+
+const botoesCurtir = document.querySelectorAll(".botao-curtir");
+
+botoesCurtir.forEach(function(curtir) {
+
+    curtir.addEventListener("click", function() {
+
+        if (curtir.textContent.trim() === "🤍") {
+            curtir.textContent = "❤️";
+            curtir.classList.add("curtido");
+        } else {
+            curtir.textContent = "🤍";
+            curtir.classList.remove("curtido");
+        }
+
+        curtir.classList.remove("animar");
+        void curtir.offsetWidth;
+        curtir.classList.add("animar");
+
+    });
+
+});
+const campoPesquisa = document.getElementById("campo-pesquisa");
+const botaoPesquisa = document.getElementById("botao-pesquisa");
+
+botaoPesquisa.addEventListener("click", function() {
+    const texto = campoPesquisa.value;
+
+    console.log("Pesquisa:", texto);
+});
+
+</script>
+
+</script>
+</body>
+</html>
+
